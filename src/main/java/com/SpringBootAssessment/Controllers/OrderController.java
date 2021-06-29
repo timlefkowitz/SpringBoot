@@ -36,7 +36,7 @@ public class OrderController {
 
     @GetMapping("/create")
     public String IndexForCreate(@ModelAttribute Model ViewModel){
-       ViewModel.addAttribute("post", orderDao.findAll());
+       ViewModel.addAttribute("orders", orderDao.findAll());
         return"orders/create";
     }
 
@@ -58,23 +58,27 @@ public class OrderController {
     }
 
 
-    @GetMapping("/orders/{id}/update")
-    public String destroy(Model model){
-//        orderDao.deleteById(id);
-        return "redirect:/index";
+
+    @GetMapping("/posts/{id}/edit")
+    public String viewEditForm(@PathVariable Long id, Model viewModel) {
+        viewModel.addAttribute("post", orderDao.getOne(id));
+        return "/posts/edit";
     }
 
-    @PostMapping("/orders/{id}/update")
-    public String updateById(@PathVariable long id){
-//        orderDao.deleteById(id);
-        return "redirect:/index";
-    }
-
-    @PostMapping("/orders/{id}/delete")
-    public String destroyById(Model model){
-//        orderDao.deleteById(id);
-        return "redirect:/index";
-    }
+//    @PostMapping("/posts/{id}/edit")
+//    public String updatePost(@PathVariable Long id, @ModelAttribute Order postToBeUpdated) {
+//
+//        postToBeUpdated.setOrderNumber(order);
+//        orderDao.save(postToBeUpdated);
+//        return "redirect:/posts/" + postToBeUpdated.getOrderNumber();
+//    }
+//
+//    @PostMapping("posts/{id}/delete")
+//    public String deletePost(@PathVariable Long OrderNumber) {
+//        Order post = orderDao.
+//        orderDao.delete(post);
+//        return "redirect:/posts";
+//    }
 
 
 

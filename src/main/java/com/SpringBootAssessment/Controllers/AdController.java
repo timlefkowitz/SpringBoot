@@ -28,11 +28,11 @@ public class AdController {
         return "adindex";
     }
 
-    @GetMapping("/create")
-    public String viewCreateForm(Model viewModel) {
-        viewModel.addAttribute("orders", new Order());
-        return "orders/create";
-    }
+//    @GetMapping("/create")
+//    public String viewCreateForm(Model viewModel) {
+//        viewModel.addAttribute("orders", new Order());
+//        return "orders/create";
+//    }
 
 //    @PostMapping(path="/add") //this means that this class is a controller. I'm going throught the docs to see why my post isn't working...
 //    public @ResponseBody String addNewUser (@RequestParam Double totalPrice, @RequestParam String email){
