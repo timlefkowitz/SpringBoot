@@ -21,15 +21,14 @@ public class AdController {
 
     @GetMapping("/")
     public String root(Model model) {
-        model.addAttribute("indexCurrent", adDao.findAll());
         return "index";
     }
 
-    @RequestMapping(value = "message", method = RequestMethod.GET)
-    public String messages(Model model) {
-        model.addAttribute("messages", adDao.findAll());
-        return "message/list";
-    }
+//    @RequestMapping(value = "message", method = RequestMethod.GET)
+//    public String messages(Model model) {
+//        model.addAttribute("messages", adDao.findAll());
+//        return "message/list";
+//    }
 
 
 

@@ -36,19 +36,18 @@ public class OrderController {
         /////////////// Create Controllers
 
     @GetMapping("/create")
-    public String IndexForCreate(@ModelAttribute Model ViewModel){
-       ViewModel.addAttribute("orders", orderDao.findAll());
+    public String IndexForCreate(){
         return"orders/create";
     }
 
     @PostMapping("/create")
-    public @ResponseBody String addNewUser (@RequestParam(name="") Double totalPrice, @RequestParam String email){
+    public String addNewOrder(@RequestParam(name="email") String email, @RequestParam(name="totalPrice") Double totalPrice){
 
         Order n = new Order();
         n.setTotalPrice(totalPrice);
         n.setEmail(email);
         orderDao.save(n);
-        return "orders/create";
+        return "redirect:/show";
     }
 
 
