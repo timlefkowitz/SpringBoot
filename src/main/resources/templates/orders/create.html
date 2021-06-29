@@ -36,31 +36,26 @@
 
 <body class="text-center" style="max-width: 1920px">
 
+<style>
+    form{
+        margin-top: 125px; max-width: 300px; margin-left:20%; margin-right:20%; align-items: center
+    }
+
+</style>
 
 
-
-<form th:action="@{/orders/create}" th:method="post" th:object="${order}" class="form-signin" style="margin-top: 125px; max-width: 300px; margin-left:20%; margin-right:20%; align-items: center">
-    <img class="mb-4" src="https://i.imgur.com/v2t7qrK.gif" alt="" width="72" height="72">
-
-
-    <h1 class="h3 mb-3 font-weight-normal">Create an Order</h1>
-
-    <!--         username-->
-    <label for="inputEmailAddr" class="sr-only">Email Address</label>
-    <input type="username" id="inputEmailAddr" class="form-control" placeholder="Enter Your Email" required="" autofocus="">
-
-
-    <!--         Content-->
-    <label for="inputContent" class="sr-only">Enter Your Total Price</label>
-    <input type="email" id="inputContent" class="form-control" placeholder="Enter Total Price 99.99" required="" autofocus="">
-
-
-
-    <br>
-
-
-    <button class="btn btn-lg btn-block" style="background:linear-gradient(to right, #9e69ba, #5dacaa);" type="submit">Post Order!</button>
-
+<form class="form-signin"  th:action="@{/add}" th:method="post" >
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" th:field="*{email}">
+        <div class="alert alert-warning" role="alert" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+    </div>
+    <div class="form-group">
+        <label for="totalprice">Total Price</label>
+        <textarea class="form-control" id="totalprice" rows="3" cols="50" th:field="*{totalPrice}"></textarea>
+        <div class="alert alert-warning" role="alert" th:if="${#fields.hasErrors('totalPeice')}" th:errors="*{totalPrice}"></div>
+    </div>
+    <button type="submit" class="btn btn-dark">Submit</button>
 </form>
 
 

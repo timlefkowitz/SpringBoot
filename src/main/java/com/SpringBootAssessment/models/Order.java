@@ -1,31 +1,32 @@
 package com.SpringBootAssessment.models;
 
-import com.SpringBootAssessment.repositories.OrderRepository;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.Data;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import javax.persistence.*;
 
 
 
-@Entity
+
+@Entity // << this is how hibernate knows to make tables out of the class
+
 @Table(name="orders")
 public class Order {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="OrderNumber")
     private long orderNumber;
+
 
     @Column(name="email", length = 50)
     private String email;
 
     @Column(name="totalPrice", length = 50)
     private Double totalPrice;
+
+//    @OneToMany(cascade = CascadeType.ALL)
+//    private List<Post> posts;
 
 //
 //    @RequestMapping("/orderList")

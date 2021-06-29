@@ -14,6 +14,10 @@
 
 
 
+
+
+
+
 <style>
     *, *::before, *::after {
         box-sizing: border-box;
@@ -26,32 +30,49 @@
         margin:0;
         background: linear-gradient(to right, #00AAFF, #00FF6c);
     }
-
-    .output{
-        color: rgba(255, 255, 255, .75);
-        font-size: 2.5rem;
-    }
 </style>
 
 
 <body class="text-center" style="max-width: 1920px">
 
 
+<h2>All Ads example:</h2>
+<div th:each="ad : ${ads}">
+    <h3 th:text="${ad.email}"></h3>
+    <p th:text="${ad.totalPrice}"><p/>
+
+</div>
+</form>
+
+
+
+
+<!--/*@thymesVar id="posts" type="templates"*/-->
+<!--<p  th:text="${posts}"></p>-->
+<!--    <form th:action="@{/posts/{post}/edit (post=${post.id})}" th:method="get">-->
+<!--        <div class="form-group">-->
+<!--            <input th:type="hidden" th:name="id" th:value="${post.id}">-->
+<!--            <button class="btn btn-dark">Edit</button>-->
+
+
+<form class="form-signin" style="margin-top: 125px; max-width: 300px; margin-left:20%; margin-right:20%; align-items: center">
+<img class="mb-4" src="https://i.imgur.com/v2t7qrK.gif" alt="" width="72" height="72">
+
+
+
+
+
+
 
 
 
 <form class="form-signin" style="margin-top: 125px; max-width: 300px; margin-left:20%; margin-right:20%; align-items: center">
-    <img class="mb-4" src="https://i.imgur.com/v2t7qrK.gif" alt="" width="72" height="72">
-
-
-    <h1 class="h3 mb-3 font-weight-normal">All Orders</h1>
 
 
 
-    <div th:each="orders : ${orders}">
-        <h3 th:text="${Allorders}"></h3>
-        <p th:text="${ad.description}" />
-    </div>
+
+
+
 
     <br>
     <button class="btn btn-lg btn-block" style="background:linear-gradient(to right, #9e69ba, #5dacaa);" type="submit">Create An Order</button>
@@ -59,6 +80,7 @@
     <button class="btn btn-lg btn-block" style="background:linear-gradient(to right, #9e69ba, #5dacaa);" type="submit">Edit an Order</button>
 
 </form>
+
 
 
 </body>
