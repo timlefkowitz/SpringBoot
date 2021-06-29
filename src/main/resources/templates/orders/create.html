@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+
+
+
+<style>
+    *, *::before, *::after {
+        box-sizing: border-box;
+        font-family: sans-serif;
+        font-weight: normal;
+    }
+
+    body {
+        padding:0;
+        margin:0;
+        background: linear-gradient(to right, #00AAFF, #00FF6c);
+    }
+
+    .output{
+        color: rgba(255, 255, 255, .75);
+        font-size: 2.5rem;
+    }
+</style>
+
+
+<body class="text-center" style="max-width: 1920px">
+
+
+
+
+<form th:action="@{/orders/create}" th:method="post" th:object="${order}" class="form-signin" style="margin-top: 125px; max-width: 300px; margin-left:20%; margin-right:20%; align-items: center">
+    <img class="mb-4" src="https://i.imgur.com/v2t7qrK.gif" alt="" width="72" height="72">
+
+
+    <h1 class="h3 mb-3 font-weight-normal">Create an Order</h1>
+
+    <!--         username-->
+    <label for="inputEmailAddr" class="sr-only">Email Address</label>
+    <input type="username" id="inputEmailAddr" class="form-control" placeholder="Enter Your Email" required="" autofocus="">
+
+
+    <!--         Content-->
+    <label for="inputContent" class="sr-only">Enter Your Total Price</label>
+    <input type="email" id="inputContent" class="form-control" placeholder="Enter Total Price 99.99" required="" autofocus="">
+
+
+
+    <br>
+
+
+    <button class="btn btn-lg btn-block" style="background:linear-gradient(to right, #9e69ba, #5dacaa);" type="submit">Post Order!</button>
+
+</form>
+
+
+</body>
+</html>
