@@ -28,10 +28,11 @@ public class OrderController {
         return"orders/show";
     }
 
-
-
-
-
+    @GetMapping("/show2")
+    public String show2(Model view){
+        view.addAttribute("ads", orderDao.findAll());
+        return"orders/show";
+    }
         /////////////// Create Controllers
 
     @GetMapping("/create")

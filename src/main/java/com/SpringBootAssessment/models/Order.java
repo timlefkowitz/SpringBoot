@@ -5,12 +5,15 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import javax.persistence.*;
-
-
+import java.util.List;
+import lombok.Data;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Entity // << this is how hibernate knows to make tables out of the class
-
+@Data
 @Table(name="orders")
 public class Order {
     @Id
@@ -24,6 +27,9 @@ public class Order {
 
     @Column(name="totalPrice", length = 50)
     private Double totalPrice;
+
+
+
 
 //    @OneToMany(cascade = CascadeType.ALL)
 //    private List<Post> posts;

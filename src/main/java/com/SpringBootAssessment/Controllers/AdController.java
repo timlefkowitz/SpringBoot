@@ -6,10 +6,7 @@ import com.SpringBootAssessment.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -22,11 +19,19 @@ public class AdController {
         this.adDao = adDao;
     }
 
-    @GetMapping("/ads")
-    public String index(Model model) {
-        model.addAttribute("ads", adDao.findAll());
-        return "adindex";
+    @GetMapping("/")
+    public String root(Model model) {
+        model.addAttribute("indexCurrent", adDao.findAll());
+        return "index";
     }
+
+    @RequestMapping(value = "message", method = RequestMethod.GET)
+    public String messages(Model model) {
+        model.addAttribute("messages", adDao.findAll());
+        return "message/list";
+    }
+
+
 
 //    @GetMapping("/create")
 //    public String viewCreateForm(Model viewModel) {
