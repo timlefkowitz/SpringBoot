@@ -5,6 +5,8 @@ package com.SpringBootAssessment.Controllers;
 import com.SpringBootAssessment.models.Order;
 import com.SpringBootAssessment.repositories.OrderRepository;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -28,11 +30,7 @@ public class OrderController {
         return"orders/show";
     }
 
-    @GetMapping("/show2")
-    public String show2(Model view){
-        view.addAttribute("ads", orderDao.findAll());
-        return"orders/show";
-    }
+
         /////////////// Create Controllers
 
     @GetMapping("/create")
@@ -63,6 +61,14 @@ public class OrderController {
     public String viewEditForm(@PathVariable Long id, Model viewModel) {
         viewModel.addAttribute("post", orderDao.getOne(id));
         return "/posts/edit";
+    }
+
+
+    @DeleteMapping(value="/show/{orderNumber}/delete")
+    public String deletePost(@PathVariable Long orderNumber){
+        Order orders = orderDao.getById(orderNumber);
+        orderDao.delete(orders);
+        return "redirect:/show";
     }
 
 //    @PostMapping("/posts/{id}/edit")

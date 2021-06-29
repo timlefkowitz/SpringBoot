@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Data
 @Table(name="orders")
 public class Order {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="OrderNumber")
