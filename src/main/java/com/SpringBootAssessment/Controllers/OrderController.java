@@ -42,7 +42,7 @@ public class OrderController {
     }
 
     @PostMapping("/create")
-    public @ResponseBody String addNewUser (@RequestParam Double totalPrice, @RequestParam String email){
+    public @ResponseBody String addNewUser (@RequestParam(name="") Double totalPrice, @RequestParam String email){
 
         Order n = new Order();
         n.setTotalPrice(totalPrice);
