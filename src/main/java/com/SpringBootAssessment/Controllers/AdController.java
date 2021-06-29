@@ -34,17 +34,17 @@ public class AdController {
         return "orders/create";
     }
 
-    @PostMapping(path="/add") //this means that this class is a controller. I'm going throught the docs to see why my post isn't working...
-    public @ResponseBody String addNewUser (@RequestParam Double totalPrice, @RequestParam String email){
-
-
-        Order n = new Order();
-        n.setTotalPrice(totalPrice);
-        n.setEmail(email);
-        OrderRepository.save(n);
-        return "Saved";
-
-
-    }
+//    @PostMapping(path="/add") //this means that this class is a controller. I'm going throught the docs to see why my post isn't working...
+//    public @ResponseBody String addNewUser (@RequestParam Double totalPrice, @RequestParam String email){
+//
+//
+//        Order n = new Order();
+//        n.setTotalPrice(totalPrice);
+//        n.setEmail(email);
+//        OrderRepository.save(n);
+//        return "Saved";
+//
+//
+//    }
 
 }
