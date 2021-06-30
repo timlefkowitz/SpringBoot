@@ -1,7 +1,7 @@
 package com.SpringBootAssessment.Controllers;
 
 
-
+import java.math.BigInteger;
 import com.SpringBootAssessment.models.Order;
 import com.SpringBootAssessment.repositories.OrderRepository;
 
@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 
 
 
@@ -24,10 +23,18 @@ public class OrderController {
             this.orderDao = orderDao;
     }
 
+    // Show Constructors
+
     @GetMapping("/show")
     public String show(Model view){
         view.addAttribute("ads", orderDao.findAll());
         return"orders/show";
+    }
+
+    @GetMapping("/show/{id}")
+    public String showById(@PathVariable Long id, Model view){
+        view.addAttribute("ads", orderDao.getById(id));
+        return "orders/show";
     }
 
 
@@ -47,45 +54,6 @@ public class OrderController {
         orderDao.save(n);
         return "redirect:/show";
     }
-
-
-    @GetMapping("/orders/{id}")
-    public String Modorder(@PathVariable long OrderNumber){
-        orderDao.deleteById(OrderNumber);
-        return "redirect:/index";
-    }
-
-
-
-    @GetMapping("/posts/{id}/edit")
-    public String viewEditForm(@PathVariable Long id, Model viewModel) {
-        viewModel.addAttribute("post", orderDao.getOne(id));
-        return "/posts/edit";
-    }
-
-
-    @DeleteMapping(value="/show/{orderNumber}/delete")
-    public String deletePost(@PathVariable Long orderNumber){
-        Order orders = orderDao.getById(orderNumber);
-        orderDao.delete(orders);
-        return "redirect:/show";
-    }
-
-//    @PostMapping("/posts/{id}/edit")
-//    public String updatePost(@PathVariable Long id, @ModelAttribute Order postToBeUpdated) {
-//
-//        postToBeUpdated.setOrderNumber(order);
-//        orderDao.save(postToBeUpdated);
-//        return "redirect:/posts/" + postToBeUpdated.getOrderNumber();
-//    }
-//
-//    @PostMapping("posts/{id}/delete")
-//    public String deletePost(@PathVariable Long OrderNumber) {
-//        Order post = orderDao.
-//        orderDao.delete(post);
-//        return "redirect:/posts";
-//    }
-
 
 
 
