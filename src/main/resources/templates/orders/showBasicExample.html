@@ -1,6 +1,20 @@
+<!--/
+
+
+        Welcome to tims spring framework example. This is a mock up of how to to use
+        spring in it's basic form
+
+/-->
+
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+
+
+<!--    I will move these at a later date sign in function is more critical-->
+
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
@@ -16,7 +30,7 @@
 
 
 
-
+<!-- I will create a basic style sheet at a later date-->
 
 <style>
     *, *::before, *::after {
@@ -33,9 +47,15 @@
 </style>
 
 
+
+
+
+<!--        body-->
 <body class="text-center" style="max-width: 1920px">
 
 
+
+<!--        for each loop to interate through the ads-->
 <h2>All Ads example:</h2>
 <div th:each="ad : ${ads}">
     <h3 th:text="${ad.email}"></h3>
@@ -43,10 +63,14 @@
 
 </div>
 
+
+
 <div class="form-signin" style="margin-top: 125px; max-width: 300px; margin-left:20%; margin-right:20%; align-items: center">
 <img class="mb-4" src="https://i.imgur.com/v2t7qrK.gif" alt="" width="72" height="72">
 <br>
 
+
+<!--     trying to move this into the form but it's still leaving the forms container -->
     <h2>All Ads example:</h2>
     <div th:each="ad : ${ads}">
         <h3 th:text="${ad.email}"></h3>
@@ -54,6 +78,8 @@
 
     </div>
 
+
+<!--            buttons with some breaks-->
     <br>
     <button class="btn btn-lg btn-block" style="background:linear-gradient(to right, #9e69ba, #5dacaa);" type="submit">Create An Order</button>
     <br>
