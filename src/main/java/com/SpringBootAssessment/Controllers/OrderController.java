@@ -38,6 +38,37 @@ public class OrderController {
     }
 
 
+    // Edit Constructors
+
+    @GetMapping("/show/{id}/edit")
+    public String viewEditForm(@PathVariable Long id, Model view)
+    {
+        view.addAttribute("ads", orderDao.getById(id));
+        return "orders/edit";
+    }
+
+    @PostMapping("show/{id}/edit")
+    public String updateOrder(@PathVariable long id, @ModelAttribute Order orderToUpdate){
+        orderDao.save(orderToUpdate);
+        return "redirect:/show" + orderToUpdate.getOrderNumber();
+    }
+
+    @GetMapping("show/{id}/delete")
+    public String showdelete(@PathVariable Long id, Model view)
+    {
+        view.addAttribute("ads", orderDao.getById(id));
+        return "orders/delete";
+    }
+
+    @PostMapping("show/{id}/delete")
+    public String deleteOrder(@PathVariable Long id)
+    {
+        Order order = orderDao.getById(id);
+        orderDao.delete(order);
+        return "redirect:/show";
+    }
+
+
         /////////////// Create Controllers
 
     @GetMapping("/create")
